@@ -1,0 +1,31 @@
+h2{
+    color: blueviolet;
+}
+
+p{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+body{
+    background-color: bisque;
+}
+
+span{
+    border: 2px solid red;
+}
+
+#borda2{
+    border-top: 5px solid black;
+    border-left: 5px solid yellow;
+    border-right: 5px solid blue;
+    border-bottom: 5px dotted green;
+}
+
+#paragrafoRodape{
+    border: 2px solid red;
+    border-radius: 10px;
+}

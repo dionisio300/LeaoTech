@@ -1,0 +1,64 @@
+<!-- Revisão -->
+ <!DOCTYPE html>
+ <html lang="pt-br">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 04</title>
+ </head>
+ <body>
+    <h1>Formulário de Candidatura</h1>
+    <form action="">
+
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome">
+
+        <br><br>
+        <label for="">E-mail:</label>
+        <input type="email" name="email" id="email">
+
+        <br><br>
+        <label for="cargo">Cargo de Tecnologia:</label>
+        <select name="cargo" id="cargo">
+            <option value="">--Selecione--</option>
+            <option value="dev">Desenvolvedor</option>
+            <option value="analista">Analista</option>
+            <option value="qa">Qualidade</option>
+        </select>
+
+        <br><br>
+        <label for="">Gênero: </label>
+
+        <input type="radio" value="m" id="m" name="genero">
+        <label for="m">Masculino</label>
+
+        <input type="radio" value="f" id="f" name="genero">
+        <label for="f">Feminino</label>
+
+        <input type="radio" value="o" id="o" name="genero">
+        <label for="o">Outro</label>
+
+        <br><br>
+        <label for="">Unidade de interesse: </label>
+        
+        <input type="checkbox" name="unidade" id="fortaleza" value="fortaleza">
+        <label for="fortaleza">Fortaleza</label>
+
+        <input type="checkbox" name="unidade" id="caucaia" value="caucaia">
+        <label for="caucaia">Caucaia</label>
+
+        <input type="checkbox" name="unidade" id="eusebio" value="eusebio">
+        <label for="eusebio">Eusébio</label>
+        
+        <br><br>
+        <label for="comentario">Fale mais sobre você:</label>
+        <br>
+
+        <textarea cols="50" rows="5"  name="comentario" id="comentario"></textarea>
+
+        <br><br>
+        <input type="submit" value="Enviar">
+    </form>
+    
+ </body>
+ </html>
