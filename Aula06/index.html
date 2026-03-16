@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 06</title>
+</head>
+
+
+<style>
+.container{
+    border: 2px solid black;
+    
+    display: flex;
+    height: 500px;
+    /* row; colum; row-reverse; colum-reverse */
+    flex-direction: row;
+    /* wrap; nowrap; wrap-reverse */
+    flex-wrap: wrap;
+    /* start; end; center; space-between; space-around; space-evenly */
+    justify-content: start;
+    /* start; end;  center; space-around; space-evenly*/
+    align-content: start;
+
+    align-items: baseline;
+}
+
+.container div{
+    margin: 5px;
+}
+
+.div1{
+    background-color: red;
+    width: 100px;
+    height: 150px;
+    order:1;
+}
+.div2{
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    order:3;
+}
+ul{
+    list-style-type: none;
+}
+.div3{
+    background-color: purple;
+    width: 100px;
+    height: 200px;
+    order:2;
+}
+.div4{
+    background-color: green;
+    width: 100px;
+    height: 100px;
+}
+
+.div5{
+    background-color: yellow;
+    width: 100px;
+    height: 100px;
+}
+
+
+
+</style>
+
+<body>
+    <h1>Display flex</h1>
+    
+    <div class="container">
+        <div class="div1">
+            Div1
+        </div>
+
+        <div class="div2">
+            Div2
+        </div>
+
+        <div class="div3">
+            Div3
+        </div>
+
+        <div class="div4">
+            Div4
+        </div>
+        <div class="div5">
+            Div5
+        </div>
+    </div>
+    
+</body>
+</html>
