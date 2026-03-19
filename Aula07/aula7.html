@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 7</title>
+
+    <style>
+        body{
+            margin-bottom: 500px;
+            
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #caixa1{
+            background: linear-gradient(to right,blue, red,green);
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 1s;
+        }
+        #caixa1:hover{
+            background: black;
+            color: white;
+            transform: scale(0.8);
+            transition: 1s;
+        }
+        div h3:hover{
+            color: red;
+        }
+
+        #formulario{
+            width: 250px;
+            height: 100px;
+            background-color: aquamarine;
+            margin-top: 10px;
+            margin-left: 5px;
+            padding: 10px;
+            border-radius: 10px;
+            /* box-shadow: deslocamentoX deslocamentoY desfoque cor */
+            box-shadow: 4px 4px 10px black;
+        }
+        #nome{
+            background-color: rgb(44, 40, 40);
+            color: white;
+            border: 1px red solid;
+        }
+        #nome:focus{
+            background-color: white;
+            color: black;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+    <style>
+        .divFixa{
+            clear: both;
+            background-color: yellow;
+            border: 2px solid;
+            width: 100%;
+            padding: 10px;
+            position: fixed;
+            z-index: 2;
+        }
+    </style>
+    
+    <div class="divFixa">
+        Div Fixa
+    </div>
+
+    <div id="caixa1">
+        <h3>Caixa 1</h3>
+    </div>
+
+    <div id="formulario">
+        <label for="nome">Nome: </label>
+        <input type="text" name="nome" id="nome">
+        <br><br>
+        <label for="idade">Idade: </label>
+        <input type="number" name="idade" id="idade">
+    </div>
+
+    <style>
+        .container{
+            border: 2px solid black;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+            
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            margin: 3px;
+            position: static;
+            
+        }
+        .verde{
+            background-color: green;
+            position: relative;
+            width: 100px;
+            height: 100px;
+            top: 20px;
+            left: 20px;
+        }
+
+    </style>
+
+    <div class="container">
+
+        <div class="box">
+            div1
+        </div>
+
+        <div class="box">
+            <div class="verde">
+                div2
+            </div>
+        </div class="box">
+
+        <div class="box">
+            div3
+        </div>
+
+    </div>
+
+    <style>
+        .divMaior{
+            background-color: gray;
+            display: inline-block;
+            width: 300px;
+            height: 300px;
+            position: relative;
+  
+        }
+        .amarelo{
+            background-color: yellow;
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            top: 50px;
+            left: 20px;
+        }
+    </style>
+
+    <div class="container">
+        <div class="divMaior">
+            <div class="amarelo">
+                Div Amarela
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+</body>
+
+</html>

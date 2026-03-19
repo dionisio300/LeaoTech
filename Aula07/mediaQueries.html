@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .caixa{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+    .caixa2{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+    @media(max-width:580px){
+        .caixa{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        .caixa2{
+            display: none;
+        }
+    }
+
+
+</style>
+<body>
+    <div class="caixa">
+        caixa
+    </div>
+    <div class="caixa2" style="margin-top: 10px;">
+        caixa
+    </div>
+</body>
+</html>
