@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 12 - Operadores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <script>
+        
+        /*
+        1. Você está desenvolvendo um sistema simples de menu para um aplicativo.
+
+        Solicite ao usuário uma opção digitando:
+        1 - Cadastrar usuário
+        2 - Listar usuários
+        3 - Sair do sistema
+
+        Utilize switch para exibir a ação correspondente a cada opção. Caso o valor seja inválido, exiba "Opção inválida".
+
+        Repita a solicitação até que a pessoa selecione a opção 3 para sair do sistema.
+        */
+        // let opcao = null
+        // while(opcao != '3'){
+        //     opcao = prompt("Digite uma opção\n1 - Cadastrar\n2 - Listar\n3 - Sair")
+        //     switch (opcao){
+        //         case '1':
+        //             console.log('Cadastrado!!')
+        //             break;
+        //         case '2':
+        //             console.log('Listado!!');
+        //             break;
+        //         case '3': 
+        //             console.log('Saindo!!');
+        //             break;
+        //         default:
+        //             console.log('opcao inválida')
+        //     }
+        // }
+
+        //1. Crie um programa que seria uma lista de desejos, onde o usuário pode pedir 3 coisas e você mostra cada um dos pedidos na tela.
+
+        // for(let i = 0; i < 3; i++){
+        //     let desejo = prompt('Digite o primeiro item')
+        //     console.log(desejo)
+        // }
+
+        // 2. Crie um programa que receba um valor de compra e depois um número de parcelas, e depois mostre na tela o valor de cada parcela utilizando um for
+
+        // let valorCompra = Number(prompt('Digite o valor da compra'))
+
+        // let numeroParcelas = parseInt(prompt('Digite o número de parcelas'))
+        // // numeroParcelas = -2
+
+        // while((numeroParcelas <= 0) || (numeroParcelas > 12)){
+        //     numeroParcelas = parseInt(prompt('Valor inválido, digite novamente entre 1 e 12'))
+        // }
+
+
+        // let parcela =  valorCompra/numeroParcelas
+
+        // for(let i = 1; i <= numeroParcelas; i++){
+        //     console.log(`Parcela ${i} = ${parcela.toFixed(2)}`)
+        // }
+
+        //4. Um professor tem 5 alunos e precisa saber quantos foram aprovados, crie um programa que peça a nota de cada um dos 5 alunos e se a nota for maior ou igual a 7, mostre aprovado, se não, recuperação. no final mostre o total de alunos aprovados e de recuperação
+
+        // let nota
+        // let aprovados = 0
+        // let recuperacao = 0
+        // for(let i = 0;i < 5; i++){
+        //     nota = parseFloat(prompt(`Digite nota do aluno ${i+1}`))
+        //     if(nota >= 7){
+        //         console.log(`Aluno ${i+1} = Aprovado`)
+        //         aprovados++
+        //     }else{
+        //         console.log(`Aluno ${i+1} = Recuperação`)
+        //         recuperacao++
+        //     }
+        // }
+        // console.log(`${aprovados} Alunos Aprovados`)
+        // console.log(`${recuperacao} Alunos de recuperação`)
+
+        // Arrays
+        //              0        1       2         3       4          5       6
+        let nomes = ['João','Letícia', 'Maria', 'Pedro','Letícia','Jessica','Carlos','Caio']
+        console.log(nomes)
+        while(nomes.indexOf('Letícia') != -1){
+
+            let index = nomes.indexOf('Letícia')
+            nomes.splice(index,1)
+            console.log(nomes)
+            
+        }
+
+
+
+        console.log(nomes)
+        console.log(nomes[2])
+        nomes[1] = 'Davi'
+        console.log(nomes)
+        console.log(nomes.length)
+
+        
+
+        
+        // Adicionar elementos no final do array
+        nomes.push('Francisco','Francisca')
+
+        //Adicionar elementos no início do array
+        nomes.unshift('Joana','Valentina')
+
+        // remover um elemento do final
+        nomes.pop()
+
+        //remover um elemento do começo do array
+        nomes.shift()
+
+        console.log(nomes)
+
+        //Adicionar ou remover elementos de uma posição específica do array
+        nomes.splice(6,3)
+
+        console.log(nomes)
+
+        nomes.splice(4,0,'Gabriel','Gabriela')
+
+        // Copiar um intervalo de um array
+
+        nomes2 = nomes.slice(0,5)
+        console.log(nomes2)
+
+
+
+        let tamanho = nomes.length
+
+        for(let i = 0; i < tamanho; i++){
+            console.log(`Seja bem-vindo ${nomes[i]}`)
+        }
+
+
+        console.log(nomes.includes('Letícia'))
+
+        console.log(nomes.indexOf('Letícia'))
+        
+
+
+
+
+
+    </script>
+
+</head>
+
+<body>
+    
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"crossorigin="anonymous"></script>
+
+</html>

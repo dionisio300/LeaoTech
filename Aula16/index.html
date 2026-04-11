@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 12 - Operadores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <script>
+
+        //Um sistema pede ao uauário o preço de 5 produtos. Armazene os valores em um array, e depois percorra o arrey e mostre a soma dos preços dos produtos, o produto mais caro e o produto mais barato.
+
+        // let precos = []
+        // let preco = null
+        // for(let i = 0;i < 5; i++){
+        //     preco = Number(prompt(`Digite o valor do produto ${i+1}`))
+        //     precos.push(preco)
+        // }
+        // let soma = 0
+        // for(let i = 0; i<5 ; i++){
+        //     soma += precos[i] 
+        // }
+        // let min = precos[0]
+        // let max = precos[0]
+        // for (let i = 0; i < 5; i++) {
+        //     if(min > precos[i]){
+        //         min = precos[i]
+        //     }
+        //     if(max < precos[i]){
+        //         max = precos[i]
+        //     }
+        // }
+        // console.log(`A soma é ${soma}\nO menor preço é ${min}\nO maior preço é ${max}`)
+
+        // Crie um sistema para cadastrar uma lista de convidados, o usuário terá duas opções, cadastrar convidado e sair. Depois de cadastrar todos os convidados, crie um progama que peça para o usuário digitar seu nome e veja se ele está na lista de convidados, se tiver dê uma mensagem de boas vindas, se não tiver diga que não foi convidado.
+
+        // Objetos no JavaScript
+
+        // let carro = {
+        //     marca : 'BYD',
+        //     modelo: 'King',
+        //     cor: 'Branco',
+        //     ano:'2025',
+        //     opcionais:['multimidia','aquecedor','trava elétrica','ABS'],
+        //     pneu:{
+        //         psi:32,
+        //         aro:15,
+        //         marcas:['Michelan','Pirelli']
+        //     }
+        // }
+        // console.log(`Marca = ${carro.marca}`)
+        // console.log(`Modelo = ${carro.modelo}`)
+        // console.log(`segundo opcional = ${carro.opcionais[1]}`)
+
+        // // Criar uma nova propriedade
+        // carro.hibrido = false
+
+        // // Modificar uma propriedade
+        // carro.ano = 2026
+
+        // // Deletar uma propriedade
+        // delete carro.hibrido
+
+        // // Obter as chaves de um objeto
+
+        // let chavesCarro = Object.keys(carro)
+        // console.log(chavesCarro)
+
+        // console.log(carro.pneu.marcas[0])
+
+        // console.log(`Estrutura do objeto carro`)
+
+        // for(let chave in carro){
+
+        //     console.log(`${chave} = ${carro[chave]}`)
+
+        // }
+
+        // console.log(`Marca = ${carro["marca"]}`)
+
+        // let pessoa = {}
+
+        // pessoa.nome = prompt('Digite seu nome')
+        // pessoa.cpf = prompt('Digite seu cpf')
+        // pessoa.cidade = prompt('Digite sua cidade')
+        // pessoa.idade = prompt('Digite sua idade')
+
+        // console.log('Cadastro Relaizado com sucesso')
+        // console.log(pessoa)
+
+        // let pessoa = {}
+
+        // pessoa.nome = 'Maria'
+        // pessoa.cpf = '32132132121'
+        // pessoa.cidade = "Fortaleza"
+        // pessoa.idade = 25
+
+        // console.log('Cadastro Relaizado com sucesso')
+        
+        // for(let chave in pessoa){
+        //     console.log(`${chave} = ${pessoa[chave]}`)
+        // }
+
+
+        // let pessoas = []
+
+        // pessoa1 = {
+        //     nome:'Maria',
+        //     idade:25,
+        //     cidade:'Fortaleza',
+        //     cpf:'3321321321'
+        // }
+        // pessoa2 = {
+        //     nome:'Jessica',
+        //     idade:29,
+        //     cidade:'Fortaleza',
+        //     cpf:'555555555'
+        // }
+        // pessoa3 = {
+        //     nome:'Mateus',
+        //     idade:30,
+        //     cidade:'Maracanaú',
+        //     cpf:'666666666'
+        // }
+
+        // pessoas.push(pessoa1,pessoa2,pessoa3)
+
+        // // Mostrar os nomes das pessoas cadastradas
+
+        // for(let i = 0; i < pessoas.length ; i++){
+        //     console.log(`${pessoas[i].nome} - ${pessoas[i].idade}`)
+        // }
+
+        // 3. Controle de funcionário
+        // Peça:
+        // nome
+        // cargo
+        // salário
+        // quantidade de faltas
+
+        // Crie um objeto funcionário.
+        // Se tiver mais de 3 faltas, mostre que o funcionário perdeu o bônus.
+        // Caso contrário, mostre que receberá bônus de 10% sobre o salário.
+
+        // let nome =  prompt('Digite o nome do funcionário')
+        // let cargo =  prompt('Digite o cargo do funcionário')
+        // let salario =  parseFloat(prompt('Digite o salario do funcionário'))
+        // let qtdFaltas =  parseInt(prompt('Digite a quantidade de faltas do funcionário'))
+
+        // let funcionario = {
+        //     nome,
+        //     cargo,
+        //     salario,
+        //     qtdFaltas
+        // }
+
+        // if(funcionario.qtdFaltas > 3){
+        //     console.log('Não tem bônus pra você')
+        // }else{
+        //     console.log(`Você recebeu o bônus de 10%, seu salário será ${funcionario.salario*1.1}`)
+        // }
+
+        // console.log(funcionario)
+
+
+        /*
+        7. Sistema de estoque
+        Usando um array de objetos produtos, percorra a lista e:
+        exiba o nome dos produtos com estoque baixo (menor que 5)
+        exiba o valor total de cada item em estoque (preço × estoque)
+        */
+
+        // let produto1 = {
+        //     nome:'Biscoito',
+        //     preco:3,
+        //     estoque:2
+        // }
+        // let produto2 = {
+        //     nome:'Manteiga',
+        //     preco:10,
+        //     estoque:20
+        // }
+        // let produto3 = {
+        //     nome:'Café',
+        //     preco:50,
+        //     estoque:3 
+        // }
+
+        // let produtos = []
+
+        // produtos.push(produto1,produto2,produto3)
+        // console.log("Produtos com estoque baixo")
+
+        // for(let i = 0; i < produtos.length; i++){
+        //     if(produtos[i].estoque < 5){
+        //         console.log(`${produtos[i].nome}`)
+        //     }
+        // }
+
+
+
+
+
+        
+        
+        
+
+        
+        
+    </script>
+
+</head>
+
+<body>
+    
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"crossorigin="anonymous"></script>
+
+</html>
