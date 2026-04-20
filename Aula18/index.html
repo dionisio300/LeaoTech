@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 12 - Operadores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <script>
+
+        // Sem parâmetros e sem retorno
+        // function exibirMsgErro(){
+        //     console.log('Estamos enfrentando um erro, você será redirecionado para outra página...')
+        // }
+        // exibirMsgErro()
+
+        // // Função com parâmtros - Calculadora :operação (+,-,*,/) , num1, num2
+
+        // function calcularNumeros(opercacao,num1,num2){
+        //     let resultado
+        //     switch(opercacao){
+        //         case '+':
+        //             resultado = num1 + num2
+        //             break
+        //         case '-':
+        //             resultado = num1 - num2
+        //             break
+        //         case '*':
+        //             resultado = num1 * num2
+        //             break
+        //         case '/':
+        //             resultado = num1 / num2
+        //             break
+        //         default:
+        //             console('operação não reconhecida')
+        //     }
+
+        //     return resultado
+        // }
+
+        // let res = calcularNumeros('*',5,6)
+        // console.log(`Resultado = ${res}`)
+
+        // // Outras formas de criar funções de JS
+        // // função Expressa
+
+        // let soma = function(a, b){
+        //     return a + b
+        // }
+
+        // if(true){ 
+        //     // function nomear(nome){
+        //     //     console.log(`seu nome é ${nome}`)
+        //     // }
+        //     let nomear = function(nome){
+        //         console.log(`seu nome é ${nome}`)
+        //     }
+        //     nomear('Ana')
+        // }
+
+        // function nomear(nome){
+        //     console.log(nome)
+        // }
+
+        // console.log(`${soma(2,5)}`)
+        // nomear('Ana')
+
+        // Arrow Function
+
+        // let subtrair = (a,b) => {
+        //     return a - b
+        // }
+
+        // let subtrair = (a, b) => a - b
+
+        // let msgErro = (codigo) => `Erro código ${codigo}, aguarde...`
+        // console.log(msgErro(500))
+        // console.log(subtrair(10,3))
+
+        // // Função com parâmetros default
+
+        // function saudacao(nome = 'Visitante'){
+        //     console.log(`Olá ${nome}`)
+        // }
+
+        // saudacao('Dionizio')
+
+        // // 
+
+        // function processar(funcaoCallback){
+        //     console.log('Processando...')
+        //     funcaoCallback()
+        // }
+        // processar(() => {console.log('Lista de usuários do sistema')})
+        // setTimeout(()=>{console.log('Esperei 2 segundos!!')},2000)
+        // let a = 3
+        // let b = 5
+
+        // setTimeout(() => {
+        //     console.log('Esperei 3 segundos')
+        // },3000)
+
+
+        //1. Crie uma função que receba como parâmetro a altura e peso e retorne o IMC.
+        //2. crie uma função que receba como parâmetro um nome e uma lista se esse nome tiver até 15 letras adicione ele na lista
+        // let nome = 'Dionizio'
+        // console.log(nome.length)
+        /*
+        3.  Crie uma função de validação que receba como parâmetro um array de objetos, o nome de usuário e senha.0 array de objetos deve ser desse tipo:
+        usuarios = [
+            {user:'maria', senha:1234, tipo: cliente},
+            {user:'joao', senha:4567, tipo: visitante},
+            {user:'jade', senha:3216, tipo: admin}
+        ]
+        Se a pessoa acertar o usuário e a senha, a função deve retornar um aviso dizendo o tipo de acesso que o usuário tem.
+
+        admin -> acesso total
+        cliente -> acesso limitado
+        visitante -> acesso básico
+
+
+
+        4. Sistema de Pedidos
+        Crie uma função que receba um array de pedidos:
+        [
+        { produto: "Mouse", preco: 50, quantidade: 2 },
+        { produto: "Teclado", preco: 100, quantidade: 1 }
+        ]
+        A função deve:
+
+        Calcular o total de cada item (preco * quantidade)
+        Somar tudo
+        Se o total for maior que 150 → aplicar 10% de desconto
+        Retornar o valor final
+        */
+
+        //https://dontpad.com/LeaoTech02/18
+
+        // forEach
+        let usuarios = ['Maria', 'João', 'Carla', 'Tiago']
+        usuarios.forEach((user) => {
+            console.log(`nome: ${user}`)
+        })
+
+        // Map
+        let precos = [100, 150, 89.99, 50]
+        let precosDesconto = precos.map((preco) => {
+            let desconto = 0.9 * preco
+            return desconto
+        })
+        console.log(precos)
+        console.log(precosDesconto)
+
+        // filter
+        let maisBaratos = precos.filter((preco) => { 
+            return preco < 100 
+        })
+
+        console.log(maisBaratos)
+        usuarios = [
+            {nome:'Maria', ativo:true, nivel:'admin'},
+            {nome:'Leticia', ativo:false, nivel:'cliente'},
+            {nome:'Carlos', ativo:true, nivel:'visitante'},
+            {nome:'Michael', ativo:false, nivel:'cliente'},
+        ]
+        let usuariosAtivos = usuarios.filter((usuario) => {
+            return usuario.ativo
+        })
+        let usuariosInativos = usuarios.filter((usuario) => {
+            return !usuario.ativo
+        })
+
+        let usuariosAtivosAdmin = usuarios.filter((usuario) => {
+            return (usuario.ativo && usuario.nivel == 'admin')
+        })
+
+        console.log(usuariosAtivos)
+        console.log(usuariosInativos)
+        console.log(usuariosAtivosAdmin)
+
+        // reduce
+        //let precos = [100, 150, 89.99, 50]
+
+        let total = precos.reduce((acumulador, preco) => {
+            return acumulador + preco
+        },0)
+
+        console.log(total)
+        console.log(precos)
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+</html>
