@@ -19,33 +19,176 @@
             justify-content: center;
             align-items: center;
         }
+
+        div form label {
+            color: red;
+        }
+
     </style>
 
 </head>
 
-<body style="margin-bottom: 500px;">
-    <h1>Aula de Eventos e DOM</h1>
-    <div onclick="enviarMsg('unico')" onmouseout="enviarMsg('out')" class="bg-danger text-bg-light caixa ms-1">
+<body style="margin-bottom: 500px;" onload="eventosTela('carregou')" onscroll="eventosTela('scroll')" onresize="eventosTela('redimensionado')">
+
+    <script>
+        function eventosTela(tipo){
+            if (tipo == 'carregou'){
+                console.log('Tela carregada')
+            }else if(tipo == 'scroll'){
+                console.log('Tela desceu')
+            }else if(tipo == 'redimensionado'){
+                console.log('Tela mudou de tamanho')
+            }
+        }
+    </script>
+
+
+
+
+    <h1 name="titulo">Aula de Eventos e DOM</h1>
+    <div id="caixa1" onclick="enviarMsg('unico')" onmouseout="enviarMsg('out')" class="bg-danger text-bg-light caixa ms-1">
         <p>Caixa 1</p>
     </div>
 
-    <div ondblclick="enviarMsg('duplo')" class="bg-success text-bg-light caixa ms-1 mt-1">
+    <div id="caixa2" ondblclick="enviarMsg('duplo')" class="bg-success text-bg-light caixa ms-1 mt-1">
         <p>Caixa 2</p>
     </div>
 
-    <div onmouseover="enviarMsg('over')" class="bg-warning text-bg-light caixa ms-1 mt-1">
+    <div id="caixa3" onmouseover="enviarMsg('over')" class="bg-warning text-bg-light caixa ms-1 mt-1">
         <p>Caixa 3</p>
     </div>
 
     <div class="mt-3 border border-dark p-3 w-75">
-        <form action="">
+        <h2 name="titulo" class="mb-3">Eventos de teclado</h2>
+        <form action="" method="get" onsubmit="enviarFomulario(event)">
             <label for="nome">Nome:</label>
-            <input type="text">
+            <input onkeydown="apertouTecla('keydown')" id="nome" type="text">
+            <br>
+
+            <label for="nome">email:</label>
+            <input onkeyup="apertouTecla('keyup')" onfocus="eventosFormulario('foco')" id="nome" type="text">
+            <br>
+
+            <label  for="telefone">telefone:</label>
+            <input oninput="eventosFormulario('input')" id="telefone" type="text">
+
+            <br>
+
+            <label  for="telefone">Profissão:</label>
+            <input onchange="eventosFormulario('change')" id="profissao" type="text">
+            <br>
+            <input  type="submit" value="Enviar">
         </form>
     </div>
+    <div class="mt-5 ms-2">
+        <button onclick="funcao1()" class="ms-2 btn btn-success">Click aqui</button>
+    </div>
+
+    <div class="mt-5">
+        <label for="nome2">Nome: </label>
+        <input id="nome2" type="text">
+    </div>
+    <div class="mt-2">
+        <label for="cidade">Cidade: </label>
+        <input id="cidade" type="text">
+    </div>
+    <div class="mt-2">
+        <label for="idade2">Idade: </label>
+        <input id="idade2" type="text">
+    </div>
+    <button onclick="trocarInputs()" class="btn btn-info mt-2">Saudar</button>
+
+    <div id="saudacao" class="mt-5">
+        
+    </div>
+
+    <script>
+        function trocarInputs(){
+            let nome = document.getElementById('nome2')
+            console.log(nome.value)
+            let cidade = document.getElementById('cidade')
+            console.log(cidade.value)
+            // Trocar valor
+            // nome.value = 'Porfirio'
+            // let aux = cidade.value
+            // cidade.value = nome.value
+            // nome.value = aux
+            let saudacao = document.getElementById('saudacao')
+            console.log(saudacao)
+            saudacao.innerHTML = `<h2>Olá ${nome.value}, seja bem-vindo a ${cidade.value}</h2>`
+        }
+
+
+    </script>
+
+
 
 </body>
 <script>
+    //selecionar elemento pelo ID
+    let caixa1 = document.getElementById('caixa1')
+    console.log(caixa1)
+
+    //selecionar elementos pela classe
+    console.log(document.getElementsByClassName('caixa')[2])
+
+    //selecionar elementos pelo nome
+    let titulos = document.getElementsByName('titulo')
+    console.log(titulos[1])
+
+    //selecionar por um seletor css
+    console.log('query selector'+document.querySelector('div form label'))
+
+    //selecionar por um seletor css
+    console.log(document.querySelectorAll('div form label'))
+
+    // Alterar o conteúdo
+
+    // caixa1.innerHTML = '<h1>Box 1</h1>'
+
+    console.log(caixa1.innerHTML)
+
+
+
+
+
+function funcao1(){
+    let pessoa = {
+        //Atributos
+        nome:'João',
+        idade: 25,
+
+        // Métodos
+        falar: function(){
+            console.log(`Meu nome é ${this.nome}`)
+        }
+    }
+    pessoa.falar()
+    pessoa.idade = 35
+    console.log(pessoa.idade)
+}
+
+function enviarFomulario(e){
+    e.preventDefault()
+    console.log('Evento do submit')
+}
+function eventosFormulario(tipo){
+    if(tipo == 'foco'){
+        console.log('Elemento com foco')
+    }else if(tipo == 'input'){
+        console.log('elemento recebeu dados')
+    }else if(tipo == 'change'){
+        console.log('elemento mudou')
+    }
+}
+
+function apertouTecla(tipo){
+    if(tipo == 'keydown'){
+        alert('Tecla pressionada')
+    }if (tipo == 'keyup'){
+        alert('Tecla keyup')
+    }
+}
 
 function enviarMsg(tipo){
     if (tipo == 'unico'){
@@ -55,7 +198,8 @@ function enviarMsg(tipo){
     }else if (tipo == 'over'){
         alert('mouse over')
     }else if(tipo == 'out'){
-        alert('mouse out')
+        let caixa1 = document.getElementById('caixa1')
+        caixa1.innerText = '<h1>Box 1</h1>'
     }
 }
 
