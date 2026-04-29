@@ -132,7 +132,7 @@ btnCEP.addEventListener('click',() => {
 
         for (let chave in dados){
             let paragrafo = document.createElement('p')
-            paragrafo.innerHTML = `${chave} = ${dados.chave}`
+            paragrafo.innerHTML = `${chave} = ${dados[chave]}`
             divResposta.appendChild(paragrafo)
         }
     })
