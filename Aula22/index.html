@@ -64,7 +64,7 @@
             </div>
         </div>
     </div>
-
+    <button id="localizacao" class="btn btn-success mt-5" onclick="pedirLocalizacao()">Localização</button>
 </body>
 
 <script>
@@ -76,39 +76,39 @@
             let url = `https://viacep.com.br/ws/${cep}/json123/`
 
             fetch(url)
-                    .then((resp) => {
-                        console.log((resp))
-                        return resp.json()
-                    })
-                    .then((dados) => {
-                        let inputRua = document.getElementById('rua')
-                        console.log(dados)
-                        inputRua.value = dados.logradouro
-                        inputRua.setAttribute('disabled', 'disabled')
+                .then((resp) => {
+                    console.log((resp))
+                    return resp.json()
+                })
+                .then((dados) => {
+                    let inputRua = document.getElementById('rua')
+                    console.log(dados)
+                    inputRua.value = dados.logradouro
+                    inputRua.setAttribute('disabled', 'disabled')
 
-                        let inputComplemento = document.getElementById('complemento')
-                        console.log(dados)
-                        inputComplemento.value = dados.complemento
-                        inputComplemento.setAttribute('disabled', 'disabled')
+                    let inputComplemento = document.getElementById('complemento')
+                    console.log(dados)
+                    inputComplemento.value = dados.complemento
+                    inputComplemento.setAttribute('disabled', 'disabled')
 
-                        let inputCidade = document.getElementById('cidade')
-                        console.log(dados)
-                        inputCidade.value = dados.localidade
-                        inputCidade.setAttribute('disabled', 'disabled')
+                    let inputCidade = document.getElementById('cidade')
+                    console.log(dados)
+                    inputCidade.value = dados.localidade
+                    inputCidade.setAttribute('disabled', 'disabled')
 
-                        let inputEstado = document.getElementById('estado')
-                        console.log(dados)
-                        inputEstado.value = dados.estado
-                        inputEstado.setAttribute('disabled', 'disabled')
+                    let inputEstado = document.getElementById('estado')
+                    console.log(dados)
+                    inputEstado.value = dados.estado
+                    inputEstado.setAttribute('disabled', 'disabled')
 
-                        let inputRegiao = document.getElementById('regiao')
-                        console.log(dados)
-                        inputRegiao.value = dados.regiao
-                        inputRegiao.setAttribute('disabled', 'disabled')
-                    })
-                    .catch((e)=>{
-                        console.log('erro')
-                    })
+                    let inputRegiao = document.getElementById('regiao')
+                    console.log(dados)
+                    inputRegiao.value = dados.regiao
+                    inputRegiao.setAttribute('disabled', 'disabled')
+                })
+                .catch((e) => {
+                    console.log('erro')
+                })
 
         }
     }
@@ -122,6 +122,36 @@
     }
 
     console.log('Olá mundo')
+
+    function pedirLocalizacao() {
+        let url = 'https://fakestoreapi.com/products'
+
+        let produto = {
+            oi:'olá'
+        }
+
+        fetch(url,{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify(produto)
+        })
+        .then((resp) => {
+            console.log(resp.status)
+            if( resp.status == 404){
+                window.location.href = 'https://www.google.com'
+            }
+            
+            return resp.json()
+        })
+        .then((dados) => {
+            console.log(dados)
+        })
+
+    }
+
+    
+
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
