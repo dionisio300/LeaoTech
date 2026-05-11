@@ -245,3 +245,4 @@ const produtos = `[
 let produtosObj = JSON.parse(produtos)
 console.log(produtosObj)
 
+export default produtosObj

@@ -1,10 +1,14 @@
 import Home from './pages/Home/Home'
+import Header from "./components/Header/Header"
+import Footer from "./components/Footer/Footer"
 
-function App(){
+function App() {
 
   return (
     <>
-      <Home/>
+      <Header />
+        <Home />
+      <Footer />
     </>
   )
 }
