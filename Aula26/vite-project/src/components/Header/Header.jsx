@@ -18,7 +18,7 @@ function Header() {
                                 <Link className="nav-link" to={'/sobre'}>Sobre</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Pricing</a>
+                                <Link className="nav-link" to={'/usuarios'}>Usuários</Link>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link disabled" aria-disabled="true">Disabled</a>
