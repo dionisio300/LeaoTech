@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer"
 // npm install react-router-dom
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import DetalhesProduto from './pages/DetalhesProduto/DetalhesProduto'
+import Cadastro from './pages/Cadastro/Cadastro'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
             <Route path='/sobre' element={<Sobre />} />
             <Route path='/produto/:id' element = {<DetalhesProduto/>}/>
             <Route path='/usuarios' element={<Usuarios/>}/>
+            <Route path='/cadastro' element={<Cadastro/>} />
         </Routes>
       </BrowserRouter>
       <Footer />

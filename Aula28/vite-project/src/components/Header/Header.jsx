@@ -21,7 +21,7 @@ function Header() {
                                 <Link className="nav-link" to={'/usuarios'}>Usuarios</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link disabled" aria-disabled="true">Disabled</a>
+                                <Link to={'/cadastro'} className="nav-link">Cadastro</Link>
                             </li>
                         </ul>
                     </div>
