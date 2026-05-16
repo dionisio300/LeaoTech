@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Cadastro = () => {
+    
+    let [email,setEmail] = useState()
+    let [senha,setSenha] = useState()
+    let [endereco,setEndereco] = useState()
+    let [cidade, setCidade] = useState()
+    let [estado, setEstado] = useState()
+    let [cep, setCep] = useState()
+
+    function filtrarEmail(valorDigitado){
+        setEmail(valorDigitado)
+        console.log(valorDigitado.includes('@'))
+    }
+
     return (
         <>
             <div className='container mt-5' style={{ minHeight: '100vh' }}>
@@ -10,7 +23,9 @@ const Cadastro = () => {
                         <form className="row g-3">
                             <div className="col-md-6">
                                 <label htmlFor="inputEmail4" className="form-label">Email</label>
-                                <input type="email" className="form-control" id="inputEmail4"/>
+                                <input type="email" className="form-control" id="inputEmail4"
+                                onChange={(e)=>filtrarEmail(e.target.value)}
+                                />
                             </div>
                             <div classNameass="col-md-6">
                                 <label htmlFor="inputPassword4" className="form-label">Password</label>
@@ -51,6 +66,14 @@ const Cadastro = () => {
                                 <button type="submit" className="btn btn-primary">Sign in</button>
                             </div>
                         </form>
+                    </div>
+                    <div>
+                        {email}<br/>
+                        {senha}<br/>
+                        {endereco}<br/>
+                        {cidade}<br/>
+                        {estado}<br/>
+                        {cep}<br/>
                     </div>
                 </div>
             </div>
