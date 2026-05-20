@@ -1,10 +1,19 @@
-import {useState} from 'react'
+import { useState, useEffect, useContext} from 'react'
 import QuemSomos from '../../components/ConteudoSobre/QuemSomos'
 import Historia from '../../components/ConteudoSobre/Historia'
 import Missao from '../../components/ConteudoSobre/Missao'
+import { LayoutContext } from '../../service/LayoutContext'
 
 const Sobre = () => {
   let [abaAtual,setAbaAtual] = useState('quemSomos')
+  let {setMostrarHeader} = useContext(LayoutContext)
+
+  useEffect(() => {
+    setMostrarHeader(false)
+    return ()=>{
+      setMostrarHeader(true)
+    }
+  },[])
 
   return (
     <>
@@ -24,10 +33,6 @@ const Sobre = () => {
         {abaAtual == 'quemSomos' && <QuemSomos/>}
         {abaAtual == 'nossaHistoria' && <Historia/>}
         {abaAtual == 'nossaMissao' && <Missao/>}
-
-        <div>
-          Contador
-        </div>
       
     </div>
     </>
