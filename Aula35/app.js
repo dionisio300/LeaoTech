@@ -67,9 +67,7 @@ async function atualizarAutor(id) {
     if (error){
         console.log(error)
     }
-    console.log(data)
 }
-// atualizarAutor(2)
 
 async function deletarAutor(id) {
     const {data, error} = await supabase.from('biblioteca_autor').delete().eq('id',id).select()
@@ -78,19 +76,83 @@ async function deletarAutor(id) {
     }
     console.log(data)
 }
-deletarAutor(3)
+
+async function inserirUsuario() {
+    let nome = prompt('Insira o nome: ')
+    let cpf = prompt('Insira o cpf: ')
+    let telefone = prompt('Insira o telefone: ')
+    let endereco = prompt('Insira o endereco: ')
+    let senha = prompt('Insira a senha: ')
+    let tipo = prompt('Insira o tipo: ')
+    const saltRounds = 10
+    const senhaCrip = await bcrypt.hash(senha, saltRounds)
+    let novoUsuario = {
+        nome:nome,
+        cpf:cpf,
+        telefone:telefone,
+        endereco:endereco,
+        senha:senhaCrip,
+        tipo:tipo
+    }
+    const {data, error} = await supabase.from('biblioteca_usuarios').insert(novoUsuario).select()
+    error ? console.log(error):console.log('Dados Inseridos com sucesso')
+}
+// senha 123456789
+// senha 12345
+async function logarSistema() {
+    console.log('====== Login =======')
+    const cpf = prompt('Digite o seu CPF: ')
+    const senha = prompt('Digite sua senha: ')
+    const {data, error} = await supabase.from('biblioteca_usuarios').select('*').eq('cpf',cpf)
+    if (error){
+        console.log('Usuário não encontrado')
+        return false
+    }
+    if (data.length > 0){
+        const senhaCorreta = await bcrypt.compare(senha,data[0].senha)
+        if (senhaCorreta){
+            return data[0]
+        }else{
+            return false
+        }
+    }else{
+        console.log('CPF não encontrado')
+        return  false
+    }
+    
+}
 
 async function menu() {
     console.log('====== MENU ======')
     console.log('1 - Cadastrar Usuário')
     console.log('2 - Cadastrar Logar no sistema')
 
-    const opcao = prompt('Escolha uma opção: ')
-    switch (opcao) {
-        case '1':
+    console.log('0 - Sair')
+    let opcao = prompt('Escolha uma opção: ')
+
+    while (opcao != '0'){
+        switch (opcao) {
+            case '1':
+                inserirUsuario()
+                break;
+            case '2':
+                let usuario = await logarSistema()
+                if (usuario){
+                    console.log('Usuário Logado')
+                    console.log(`Seja bem-vindo ${usuario.nome}`)
+                }
+                break;
             
-            break;
-        default:
-            break;
+            default:
+                break;
+        }
+        console.log('====== MENU ======')
+        console.log('1 - Cadastrar Usuário')
+        console.log('2 - Logar no sistema')
+
+        console.log('0 - Sair')
+        opcao = prompt('Escolha uma opção: ')
     }
 }
+
+menu()
