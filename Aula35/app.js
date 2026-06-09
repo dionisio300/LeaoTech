@@ -19,13 +19,13 @@ async function inserirAutor(){
 // inserirAutor()
 
 async function listarLivros() {
-    const {data, error} = await supabase.from('biblioteca_livro').select('titulo,genero, biblioteca_autor(nome,nacionalidade)')
+    const {data, error} = await supabase.from('biblioteca_livro').select('titulo,genero, biblioteca_autor(nome,nacionalidade),quantidade')
     if (error){
         console.log(error)
     }
-    console.log(data)
     data.forEach(livro => {
-        console.log(`Título: ${livro.titulo} - ${livro.biblioteca_autor.nome}, Gênero: ${livro.genero}`)
+        console.log('========================================================')
+        console.log(`Título: ${livro.titulo}\nQuantidade: ${livro.quantidade}`)
     });
 }
 // listarLivros()
@@ -122,6 +122,8 @@ async function logarSistema() {
     
 }
 
+
+
 async function menu() {
     console.log('====== MENU ======')
     console.log('1 - Cadastrar Usuário')
@@ -140,6 +142,29 @@ async function menu() {
                 if (usuario){
                     console.log('Usuário Logado')
                     console.log(`Seja bem-vindo ${usuario.nome}`)
+                    if(usuario.tipo == 'cliente'){
+                        console.log('====== MENU ======')
+                        console.log('1 - Listar Livros')
+                        console.log('0 - Sair')
+                        let opcaoCliente = prompt('Escolha uma opção: ')
+                        while(opcaoCliente != '0'){
+                            switch (opcaoCliente) {
+                                case '1':
+                                    await listarLivros()
+                                    break;
+                            
+                                default:
+                                    break;
+                            }
+                            console.log('====== MENU ======')
+                            console.log('1 - Listar Livros')
+                            console.log('0 - Sair')
+                            opcaoCliente = prompt('Escolha uma opção: ')
+                        }
+                        
+                    }else if(usuario.tipo == 'funcionario'){
+                        console.log('É funcionario')
+                    }
                 }
                 break;
             
