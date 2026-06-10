@@ -142,6 +142,7 @@ async function menu() {
                 if (usuario){
                     console.log('Usuário Logado')
                     console.log(`Seja bem-vindo ${usuario.nome}`)
+                    
                     if(usuario.tipo == 'cliente'){
                         console.log('====== MENU ======')
                         console.log('1 - Listar Livros')

@@ -76,3 +76,4 @@ async function deletarAutor(id) {
     console.log(data)
 }
 deletarAutor(3)
+
