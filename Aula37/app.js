@@ -5,6 +5,17 @@ const supabase = createClient(process.env.SUPABASE_URL,process.env.SUPABASE_KEY)
 const bcrypt = require('bcrypt')
 const express = require('express')
 const app = express()
+app.use(express.json())
+
+app.post('/cadastrarusuario', async (req, res) =>{
+    console.log(req.body)
+    const dados = req.body
+    const resultado = await inserirUsuario(dados)
+    console.log(resultado)
+    res.json(resultado)
+})
+
+// Crie um endpoit para cadastrar um autor
 
 async function inserirAutor(){
     let nome = prompt('Digite o nome do autor: ')
@@ -123,13 +134,13 @@ async function deletarAutor(id) {
     console.log(data)
 }
 
-async function inserirUsuario() {
-    let nome = prompt('Insira o nome: ')
-    let cpf = prompt('Insira o cpf: ')
-    let telefone = prompt('Insira o telefone: ')
-    let endereco = prompt('Insira o endereco: ')
-    let senha = prompt('Insira a senha: ')
-    let tipo = prompt('Insira o tipo: ')
+async function inserirUsuario(dados) {
+    let nome = dados.nome
+    let cpf = dados.cpf
+    let telefone = dados.telefone
+    let endereco = dados.endereco
+    let senha = dados.senha
+    let tipo = dados.tipo
     const saltRounds = 10
     const senhaCrip = await bcrypt.hash(senha, saltRounds)
     let novoUsuario = {
