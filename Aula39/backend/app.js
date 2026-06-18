@@ -8,8 +8,12 @@ const express = require('express')
 const jwt = require('jsonwebtoken')
 const JWT_SENHA = process.env.JWT_SENHA
 
+const cors = require('cors')
+
 const app = express()
+app.use(cors())
 app.use(express.json())
+
 
 //npm install jsonwebtoken
 //npm install cors
@@ -259,14 +263,14 @@ const API_KEY = process.env.API_KEY
 
 // // menu()
 
-app.get('/listarlivros',async (req,res) => {
-    const chaveRecebida = req.headers['api-key']
-    console.log(chaveRecebida)
-    if(chaveRecebida != API_KEY){
-        return res.status(401).json({
-            "erro":"Chave API errada"
-        })
-    }
+app.get('/listarlivros',autenticarToken,async (req,res) => {
+    // const chaveRecebida = req.headers['api-key']
+    // console.log(chaveRecebida)
+    // if(chaveRecebida != API_KEY){
+    //     return res.status(401).json({
+    //         "erro":"Chave API errada"
+    //     })
+    // }
 
     const {data, error} = await supabase.from('biblioteca_livro').select('*')
     if (error){
@@ -277,7 +281,7 @@ app.get('/listarlivros',async (req,res) => {
     console.log('Deu tudo certo!!',data)
     res.json(data)
 })
-app.get('/listarlivros/:id/:genero', async (req,res) => {
+app.get('/listarlivros/:id/:genero',autenticarToken, async (req,res) => {
 
     const chaveRecebida = req.headers['api-key']
     console.log(chaveRecebida)
@@ -437,6 +441,26 @@ app.post('/login', async (req,res) => {
     })
 
 })
+
+function autenticarToken(req, res, next){
+    const authHeader = req.headers.authorization
+    if(!authHeader){
+        return res.json({
+            erro:'Token não enviado'
+        })
+    }
+    const token = authHeader.split(' ')[1]
+    try{
+        const usuario = jwt.verify(token,JWT_SENHA)
+        req.usuario = usuario
+        console.log(usuario)
+        next()
+    }catch{
+        return res.json({
+            erro:'Token inválido'
+        })
+    }
+}
 
 app.listen(3000, () => {
     console.log('Acesse o sistema em: http://localhost:3000')
