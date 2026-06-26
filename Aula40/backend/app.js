@@ -58,6 +58,7 @@ const API_KEY = process.env.API_KEY
 
 //     if (error){
 //         console.log(error)
+//         return
 //     }
 
 //     console.log('Deu tudo certo!!',data)
@@ -281,6 +282,7 @@ app.get('/listarlivros',autenticarToken,async (req,res) => {
     console.log('Deu tudo certo!!',data)
     res.json(data)
 })
+
 app.get('/listarlivros/:id/:genero',autenticarToken, async (req,res) => {
 
     const chaveRecebida = req.headers['api-key']
@@ -332,15 +334,16 @@ app.get('/buscarlivro', async (req,res) => {
 
 app.post('/cadastrarlivro', async(req,res) => {
 
-    const chaveRecebida = req.headers['api-key']
-    console.log(chaveRecebida)
-    if(chaveRecebida != API_KEY){
-        return res.status(401).json({
-            "erro":"Chave API errada"
-        })
-    }
+    // const chaveRecebida = req.headers['api-key']
+    // console.log(chaveRecebida)
+    // if(chaveRecebida != API_KEY){
+    //     return res.status(401).json({
+    //         "erro":"Chave API errada"
+    //     })
+    // }
 
     console.log(req.body)
+
     const {data, error} = await supabase.from('biblioteca_livro').insert(req.body).select()
 
     if (error){
@@ -352,8 +355,8 @@ app.post('/cadastrarlivro', async(req,res) => {
     res.json(data)
 })
 
-app.put('/atualizarlivro/:id_livro', async (req,res) => {
-
+app.put('/atualizarlivro/:id_livro',autenticarToken, async (req,res) => {
+    console.log('atualizar livro')
     const chaveRecebida = req.headers['api-key']
     console.log(chaveRecebida)
     if(chaveRecebida != API_KEY){
@@ -376,7 +379,7 @@ app.put('/atualizarlivro/:id_livro', async (req,res) => {
     res.json(data)
 })
 
-app.delete('/deletarlivro/:id_livro', async (req,res) => {
+app.delete('/deletarlivro/:id_livro',autenticarToken, async (req,res) => {
 
     const chaveRecebida = req.headers['api-key']
     console.log(chaveRecebida)
